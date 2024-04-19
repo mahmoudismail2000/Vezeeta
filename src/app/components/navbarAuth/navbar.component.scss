@@ -1,0 +1,15 @@
+.tOfDoctor{
+    position: absolute;
+    top: 20px;
+    &::after{
+        content: '';
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        top: 20px;
+        left: 8px;
+        background-color: rgb(205, 12, 12);
+        border-radius: 100%;
+       
+    }
+}

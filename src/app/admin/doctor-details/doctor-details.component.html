@@ -1,0 +1,41 @@
+<section class="details d-flex justify-content-center mt-5 pt-5">
+    <div class="row shadow p-4 gt-4 w-100 rounded-4 mx-4 d-flex align-items-center">
+        <div class="col-md-4">
+            <div class="rounded-4 overflow-hidden">
+                
+                <p-image [src]="'https://localhost:7198/images/'+doctorDetails.photoPath" [alt]="doctorDetails.firstName+' '+doctorDetails.lastName" height="220" class="w-100" [preview]="true"></p-image>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="content">
+                <div>
+                    <i class="fa-solid fa-user me-2"></i>
+                    <p class="text-capitalize">Full Name : <span>{{doctorDetails.firstName+' '+doctorDetails.lastName}}</span></p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-envelope me-2"></i>
+                    <p>Email : <span>{{doctorDetails.email}}</span></p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-stethoscope me-2"></i>
+                    <p>Specialize : <span>{{doctorDetails.specialize}}</span></p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-user me-2"></i>
+                    <p>Phone : <span>{{doctorDetails.phone}}</span></p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-venus-mars me-2"></i>
+                    <p>Gender : <span>{{doctorDetails.gender}}</span></p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-calendar me-2"></i>
+                    <p>Date Of Birth : <span>{{doctorDetails.dateOfBirth}}</span></p>
+                </div>
+                
+                
+    
+            </div>
+        </div>
+    </div>
+</section>

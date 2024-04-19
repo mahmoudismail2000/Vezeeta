@@ -1,1 +1,70 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap");
+@import "node_modules/@costlydeveloper/ngx-awesome-popup/styles/theme";
+
+
+
+
+$main-color:#2B2589;
+$font-family: "Encode Sans Expanded", sans-serif;
+
+.boxShadow{
+    box-shadow: -2px 4px 14px -1px rgba(0,0,0,0.7);
+    -webkit-box-shadow: -2px 4px 14px -1px rgba(0,0,0,0.7);
+    -moz-box-shadow: -2px 4px 14px -1px rgba(0,0,0,0.7);
+}
+
+
+
+.bg-main{
+    background-color: $main-color;
+}
+
+.text-main{
+    color:$main-color ;
+}
+
+
+
+i{
+    cursor: pointer;
+}
+
+input,select{
+    padding: 5px !important;
+}
+
+.btn-main{
+    border: unset;
+    cursor: pointer;
+    color: #fff !important;
+    background-color: $main-color !important;
+    padding: 7px 20px;
+    transition: background-color $main-color !important;
+    border-radius: 5px;
+    &:hover{
+        background-color: #3129ad !important;
+    }
+    &:disabled{
+        background-color: #3b385f !important;
+        color: #ffffff8e !important;
+        cursor: not-allowed;
+    }
+}
+
+.active-link{
+    border: unset !important;
+    cursor: pointer;
+    color: black !important;
+    background-color: rgb(242, 242, 242) !important;
+    padding: 10px 15px !important;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.btn-Hover{
+    transition:all .5s;
+    &:hover{
+        transform: translateY(-20%);
+    }
+}
+

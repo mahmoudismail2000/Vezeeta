@@ -1,0 +1,43 @@
+<section class="my-4">
+    <div class="row gy-3">
+        
+        <div class="col-md-3" *ngFor="let doctor of doctors| paginate: { id: 'paginateDoctors',
+        itemsPerPage: pagData.pageSize,
+        currentPage: pagData.currentPage,
+        totalItems: pagData.totalCount}">
+            <div  class="shadow rounded-3 overflow-hidden card">
+               <div class="d-flex flex-column align-items-center" [routerLink]="['/details',doctor.id]">
+                <div class="layout">
+                    <img [src]="'https://localhost:7198/images/'+doctor.photoPath" height="270" class="w-100 rounded-top-3" alt="">
+                </div>
+               <span class="fw-bold text-capitalize"><span class="text-main">Dr :</span> {{doctor.fullName}}</span>
+               <span>{{doctor.specialize}}</span>
+               </div>
+               <div class="d-flex justify-content-center my-2 buttons">
+                <button class="btn btn-danger me-3 btn-Hover" (click)="deleteDoctor(doctor.id)">Delete</button>
+                <button class="btn btn-warning px-4 btn-Hover" [routerLink]="['/editDoctor',doctor.id]">Edit</button>
+               </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="d-flex justify-content-center mt-3">
+        <pagination-controls  id="paginateDoctors" class="my-pagination"
+                  (pageChange)="pageChanged($event)"
+                  (pageBoundsCorrection)="pageChanged($event)"
+                  [maxSize]="9"
+                  [directionLinks]="true"
+                  [autoHide]="true"
+                  [responsive]="true"
+                  previousLabel="Previous"
+                  nextLabel="Next"
+                  screenReaderPaginationLabel="Pagination"
+                  screenReaderPageLabel="page"
+                  screenReaderCurrentLabel="You're on page">
+</pagination-controls>
+    </div>
+    
+
+    
+</section>

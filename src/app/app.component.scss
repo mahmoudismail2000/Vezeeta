@@ -1,0 +1,45 @@
+
+.fa-heart-pulse{
+    font-size: 500px !important;
+}
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+      margin-bottom: 30px;
+    }
+    
+      50% {
+        opacity: 0.5;
+        
+      }
+      
+      100% {
+        opacity: 1;
+      }
+    
+  }
+.topScroll{
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    background-color:#2B2589;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 999999999999999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn .8s;
+    transition: all .5s;
+    &:hover{
+        margin-bottom: 20px;
+        
+    }
+    i{
+        font-size: 30px;
+        color: white;
+    }
+}
+

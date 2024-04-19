@@ -1,0 +1,122 @@
+<section class="registerSec py-2 mt-5">
+  
+    <div class="w-75 mx-auto bg-white p-5 my-5 shadow rounded-3">
+      <h2 class="text-main">Welcome Back!</h2>
+      <form class="d-flex flex-column align-items-center justify-content-center py-5" [formGroup]="registerForm" (ngSubmit)="register()">
+        <div class="w-50">
+          <div class="spec">
+            <div class="d-flex align-items-center">
+              <i class="fa-solid fa-user text-muted me-2"></i>
+              <input type="text" formControlName="firstName" name="firstName"  placeholder="First Name *" class="form-control w-100 pb-0 mb-2" #firstName>
+            </div>
+          </div>
+          <div class="alert alert-danger w-100 mt-2" *ngIf="registerForm.get('firstName')?.errors&&(registerForm.get('firstName')?.touched||firstName.value.length>0)">
+            <p  *ngIf="registerForm.get('firstName')?.getError('required')" class="mb-0 text-center">First Name Required</p>
+            <p  *ngIf="registerForm.get('firstName')?.getError('minlength')" class="mb-0 text-center">First Name MinLength 3</p>
+            <p  *ngIf="registerForm.get('firstName')?.getError('maxlength')" class="mb-0 text-center">First Name MaxLength 20</p>
+          </div>
+          
+        </div>
+        
+        <div class="w-50 my-2">
+            <div class="spec">
+              <div class="d-flex align-items-center">
+                <i class="fa-solid fa-user text-muted me-2"></i>
+                <input type="text" formControlName="lastName" name="lastName"  placeholder="Second Name *" class="form-control w-100 pb-0 mb-2" #lastName>
+              </div>
+            </div>
+            <div class="alert alert-danger w-100 mt-2" *ngIf="registerForm.get('lastName')?.errors&&(registerForm.get('lastName')?.touched||lastName.value.length>0)">
+              <p  *ngIf="registerForm.get('lastName')?.getError('required')" class="mb-0 text-center">Last Name Required</p>
+              <p  *ngIf="registerForm.get('lastName')?.getError('minlength')" class="mb-0 text-center">Last Name MinLength 3</p>
+              <p  *ngIf="registerForm.get('lastName')?.getError('maxlength')" class="mb-0 text-center">Last Name MaxLength 20</p>
+            </div>
+            
+          </div>
+          <div class="w-50">
+            <div class="spec">
+              <div class="d-flex align-items-center">
+              <i class="fa-solid fa-envelope text-muted me-2"></i>
+              <input type="email" formControlName="email" name="email" placeholder="Email *" class="form-control w-100 pb-0 mb-2" #email>
+            </div>
+
+            </div>
+            <div class="alert alert-danger w-100 mt-2" *ngIf="registerForm.get('email')?.errors&&(registerForm.get('email')?.touched||email.value.length>0)">
+              <p  *ngIf="registerForm.get('email')?.getError('required')" class="mb-0 text-center">Email Required</p>
+              <p  *ngIf="registerForm.get('email')?.getError('email')" class="mb-0 text-center">Email Invalid</p>
+              
+            </div>
+            
+          </div>
+          <div class="w-50 my-2">
+            <div class="spec">
+              <div class="d-flex align-items-center">
+                <i class="fa-solid fa-lock text-muted me-2"></i>
+                <input type="password" formControlName="password" name="password"  placeholder="Password *" class="form-control w-100 pb-0 mb-2" #password>
+              </div>
+            </div>
+            <div class="alert alert-danger w-100 mt-2" *ngIf="registerForm.get('password')?.errors&&(registerForm.get('password')?.touched||password.value.length>0)">
+              <p  *ngIf="registerForm.get('password')?.getError('required')" class="mb-0 text-center">Password Required</p>
+              
+            </div>
+            
+          </div>
+          <div class="w-50 my-2">
+            <div class="spec">
+              <div class="d-flex align-items-center">
+                <i class="fa-solid fa-lock text-muted me-2"></i>
+                <input type="password" formControlName="rePassword" name="rePassword" placeholder="Re-Password *" class="form-control w-100 pb-0 mb-2" #rePassword>
+              </div>
+            </div>
+            <div class="alert alert-danger w-100 mt-2" *ngIf="registerForm.get('rePassword')?.errors&&(registerForm.get('rePassword')?.touched||rePassword.value.length>0)">
+              <p  *ngIf="registerForm.get('rePassword')?.getError('required')" class="mb-0 text-center">Re-Password Required</p>
+              <p  *ngIf="registerForm.get('rePassword')?.getError('misMatch')" class="mb-0 text-center">Re-Password Not Matched</p>
+              
+            </div>
+            
+          </div>
+        <div class="w-50">
+          <div class="spec">
+            <div class="d-flex align-items-center">
+              <i class="fa-solid fa-square-phone text-muted me-2"></i>
+              <input type="tel" formControlName="phone"  placeholder="Phone *" name="phone" class="form-control w-100 pb-0 mb-2" #phone>
+            </div>
+          </div>
+          <div class="alert alert-danger w-100 mt-2" *ngIf="registerForm.get('phone')?.errors&&(registerForm.get('phone')?.touched||phone.value.length>0)">
+            <p  *ngIf="registerForm.get('phone')?.getError('required')" class="mb-0 text-center">Phone Required</p>
+            <p  *ngIf="registerForm.get('phone')?.getError('pattern')" class="mb-0 text-center">Phone Invalid</p>
+            
+          </div>
+          
+        </div>
+        <div class="specDate d-flex justify-content-between w-50">
+            <div class="w-50">
+                <label for="date">Date :</label>
+                <input type="date" formControlName="dateOfBirth" name="dateOfBirth" class="form-control" id="date">
+            </div>
+            <div class="w-25 position-relative">
+                <label for="gender">Gender :</label>
+                <div class="position-relative">
+                <select class="form-control" formControlName="gender" name="gender" id="gender">
+                    <option value="1" selected>Male</option>
+                    <option value="0">Female</option>
+                </select>
+                <i class="fa-solid fa-caret-down position-absolute fa-xl"></i>
+                </div>
+            </div>
+        </div>
+        <div>
+          <label for="doctorImage">
+              <img src="./assets/gallery.png" alt="Add Photo">
+              <span class="fw-bold ms-3">Add Image</span>
+          </label>
+          <input type="file" id="doctorImage" class="d-none" (change)="onFileChanged($event)">
+      </div>
+        
+        <div>
+          <button class="btn-main mt-4 fw-bold">Register</button>
+        </div>
+      </form>
+    </div>
+    
+  
+  </section>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'vezeeta';
+  
+  isShow:boolean=false
+  @HostListener('window:scroll')
+  numberOfPixelsScroll():void
+  {
+    if(window.pageYOffset>100){
+      this.isShow=true
+      
+
+    }else{
+      this.isShow=false
+    }
+  }
+  scrollTop():void{
+        window.scrollTo({top:0,behavior:'smooth'})
+  }
 }

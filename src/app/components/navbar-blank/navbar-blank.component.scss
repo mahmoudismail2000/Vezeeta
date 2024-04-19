@@ -1,0 +1,27 @@
+.fa-magnifying-glass{
+    top: 8px;
+    left: 5px;
+    font-size: 17px;
+}
+
+.icons a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+   
+}
+.tOfDoctor{
+    position: absolute;
+    top: 10px;
+    &::after{
+        content: '';
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        top: 20px;
+        left: 8px;
+        background-color: rgb(205, 12, 12);
+        border-radius: 100%;
+       
+    }
+}

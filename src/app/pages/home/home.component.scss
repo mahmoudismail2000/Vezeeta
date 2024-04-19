@@ -1,0 +1,48 @@
+img{
+    height: 90vh;
+}
+.btn{
+    padding: 12px 25px !important;
+}
+.description{
+    z-index: 11;
+    left: 10%;
+    top: 20%;
+    
+    .bestSpan{
+        font-size: 20px;
+        font-weight: bold;
+        position: relative;
+        padding-left: 15px;
+        &::after{
+            content: '';
+            position: absolute;
+            width: 7px;
+            height: 30px;
+            top: 0;
+            left: 0;
+            background-color: #8a0828;
+        }
+    }
+    .leanMore{
+        background-color: #8a0828;
+        color: white;
+        &:hover{
+            background-color: #ad1037;
+        }
+    }
+}
+.slider{
+position: relative;
+&::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color:rgba(0,0,0,.5);
+    z-index: 10;
+}
+
+}

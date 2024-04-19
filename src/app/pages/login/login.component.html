@@ -1,0 +1,48 @@
+
+<section class="loginSec py-2 mt-5">
+ 
+  <div class="w-75 mx-auto bg-white p-5 my-5 shadow rounded-3" >
+    <h2 class="text-main">Welcome Back!</h2>
+    <img src="https://lottie.host/6f444007-4140-483b-b1a4-d58084aff4b1/DKDu98ZRyH.json" class="w-100" alt="">
+    <form class="d-flex flex-column align-items-center justify-content-center my-5 py-5" [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="w-50 spec">
+        <div class="d-flex align-items-center">
+          <i class="fa-solid fa-envelope text-muted me-2"></i>
+          <input type="email" formControlName="email" placeholder="Email *" class="form-control w-100 pb-0 mb-2" #email>
+          
+        </div>
+        <!-- <div class="alert alert-danger w-100" *ngIf="loginForm.get('email')?.errors&&loginForm.get('email')?.touched||email.value.length>0">
+          <p  *ngIf="loginForm.get('email')?.getError('required')" class="mb-0 text-center">Email Required</p>
+          <p  *ngIf="loginForm.get('email')?.getError('email')" class="mb-0 text-center">Email Invalid</p>
+        </div> -->
+        
+      </div>
+      <div class="alert alert-danger w-50 mt-2" *ngIf="loginForm.get('email')?.errors&&(loginForm.get('email')?.touched||email.value.length>0)">
+        <p  *ngIf="loginForm.get('email')?.getError('required')" class="mb-0 text-center">Email Required</p>
+        <p  *ngIf="loginForm.get('email')?.getError('email')" class="mb-0 text-center">Email Invalid</p>
+      </div>
+      <div class="w-50 my-3 spec">
+        <div class="d-flex align-items-center">
+          <i class="fa-solid fa-lock text-muted me-2"></i>
+          <input type="password" formControlName="password" placeholder="Password *" class="form-control w-100 pb-0 mb-2" #password>
+          
+        </div>
+        
+        
+      </div>
+      <div class="alert alert-danger w-50" *ngIf="loginForm.get('password')?.errors&&(loginForm.get('password')?.touched||password.value.length>0)">
+        <p  *ngIf="loginForm.get('password')?.getError('required')" class="mb-0 text-center">Password Invalid</p>
+      </div>
+      <div *ngIf="loginErrorsMsg" class="w-50">
+        <p class="alert alert-danger text-center">{{loginErrorsMsg}}</p>
+      </div>
+      <div>
+        <button class="btn-main mt-2" [disabled]="loginForm.invalid">
+          <i class="fa-solid fa-spinner fa-spin me-2" *ngIf="isLoading"></i>
+          Login
+        </button>
+      </div>
+    </form>
+  </div>
+
+</section>

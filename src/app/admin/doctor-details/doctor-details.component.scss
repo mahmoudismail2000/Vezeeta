@@ -1,0 +1,23 @@
+.content{
+    div{
+        display: flex;
+        align-items: center;
+        margin-bottom: 7px;
+        p{
+            margin-bottom: 0px !important;
+            font-weight: bold;
+            span{
+                font-weight: 500;
+            }
+        }
+        i{
+            width: 25px;
+            font-size: 20px;
+            color: #2B2589;
+        }
+
+    }
+}
+.row{
+    background-color: rgb(242, 242, 242);
+}

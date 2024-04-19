@@ -1,0 +1,78 @@
+<section>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="pt-5">
+                <img  [src]="'https://khatabzeta13.azurewebsites.net/images/'+doctorData.photoPath" class="w-100 rounded-5" alt="" *ngIf="isHideServerImage">
+                <img  [src]="imgPath" *ngIf="imgPath" class="w-100 rounded-5" alt="">
+            </div>
+        </div>
+        <div class="col-md-8">
+           
+                <div class="w-100 mx-auto bg-white p-5 my-5 shadow rounded-3">
+                    <h2 class="text-main">Welcome Back!</h2>
+                    <form class="d-flex flex-column align-items-center justify-content-center pt-5" [formGroup]="editForm">
+                      <div class="w-100 spec">
+                        <div class="d-flex align-items-center">
+                          <i class="fa-solid fa-user text-muted me-2"></i>
+                          <input type="text" formControlName="firstName" placeholder="First Name *" [value]="doctorData.firstName" class="form-control w-100 pb-0 mb-2">
+                        </div>
+                        
+                        
+                      </div>
+                      <div class="w-100 spec my-2">
+                          <div class="d-flex align-items-center">
+                            <i class="fa-solid fa-user text-muted me-2"></i>
+                            <input type="text" formControlName="lastName"  placeholder="Second Name *" [value]="doctorData.lastName" class="form-control w-100 pb-0 mb-2">
+                          </div>
+                          
+                        </div>
+                        <div class="w-100 spec">
+                          <div class="d-flex align-items-center">
+                            <i class="fa-solid fa-envelope text-muted me-2"></i>
+                            <input type="email" formControlName="email" placeholder="Email *" [value]="doctorData.email" class="form-control w-100 pb-0 mb-2">
+                          </div>
+                          
+                        </div>
+                    
+                      <div class="w-100 spec">
+                        <div class="d-flex align-items-center">
+                          <i class="fa-solid fa-square-phone text-muted me-2"></i>
+                          <input type="tel" formControlName="phone"  placeholder="Phone *" [value]="doctorData.phone"  class="form-control w-100 pb-0 mb-2">
+                        </div>
+                        
+                      </div>
+                      <div class="d-flex justify-content-between w-100">
+                          <div class="w-50">
+                              <label for="date">Date :</label>
+                              <input type="text" formControlName="dateOfBirth" class="form-control" id="date" [value]="doctorData.dateOfBirth" readonly>
+                          </div>
+                          <div class="w-25 position-relative" >
+                            <label for="gender">Gender :</label>
+                            <input type="text" formControlName="gender" class="form-control" id="date" [value]="doctorData.gender" readonly>
+                        </div>
+                      </div>
+                      <div class="w-100 d-flex justify-content-between">
+                        <div class="w-50">
+                          <label for="specializationId">Specialize :</label>
+                              <input type="text" formControlName="specializationId" class="form-control" id="specializationId" [value]="doctorData.specialize">
+                        </div>
+                        <div class="mt-2">
+                          <label for="doctorImage">
+                            <img src="./assets/gallery.png" alt="Add Photo">
+                            <span class="fw-bold ms-3">Add Image</span>
+                        </label>
+                        <input type="file" id="doctorImage" class="d-none" (change)="changeImage($event)">
+                        </div>
+                        
+                    </div>
+                      
+                      <div class="w-100">
+                        <button class="btn-main mt-4 fw-bold w-100" (click)="editDoctor()">Edit Data</button>
+                      </div>
+                    </form>
+                  </div>
+            
+
+        </div>
+    </div>
+</section>

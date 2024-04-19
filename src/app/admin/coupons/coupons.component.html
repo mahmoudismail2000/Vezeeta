@@ -1,0 +1,120 @@
+<section class="my-3">
+    
+
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-4 offset-1">
+            <div >
+                <img src="./assets/Work time-amico.svg" class="w-100 hideEle" alt="">
+            </div>
+        </div>
+        <div class="col-md-7" *ngIf="isAdd">
+            <div class="p-5 shadow rounded-4">
+                <h2 class="fw-bold">Add Coupon :</h2>
+                <form [formGroup]="addCouponForm" (ngSubmit)="addCoupon()">
+                    <div class="my-2">
+                        <label for="discountCode">Discount Code</label>
+                        <input type="text" id="discountCode" class="form-control" formControlName="discountCode" #inputAdd #discountCode>
+                        <div class="alert alert-danger" *ngIf="addCouponForm.get('discountCode')?.errors&&(addCouponForm.get('discountCode')?.touched || discountCode.value.length>0)">
+                            <p class="mb-0" *ngIf="addCouponForm.get('discountCode')?.getError('required')">Discount Code Required</p>
+                            <p class="mb-0" *ngIf="addCouponForm.get('discountCode')?.getError('minlength')">Discount Code MinLength 3</p>
+                            <p class="mb-0" *ngIf="addCouponForm.get('discountCode')?.getError('maxlength')">Discount Code MaxLength 6</p>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="numOfRequest">Number Of Request</label>
+                        <input type="number" id="discoundCode" class="form-control" formControlName="numOfRequests" #inputAdd #numOfRequests>
+                        <div class="alert alert-danger" *ngIf="addCouponForm.get('numOfRequests')?.errors&&(addCouponForm.get('numOfRequests')?.touched || numOfRequests.value.length>0)">
+                            <p class="mb-0" *ngIf="addCouponForm.get('numOfRequests')?.getError('required')">Number Of Request Required</p>
+                        </div>
+                    </div>
+                   
+                    <div>
+                        <label for="value">Value</label>
+                        <input type="number" id="value" class="form-control" formControlName="value" #inputAdd #value >
+                        <div class="alert alert-danger" *ngIf="addCouponForm.get('value')?.errors&&(addCouponForm.get('value')?.touched || value.value.length>0)">
+                            <p class="mb-0" *ngIf="addCouponForm.get('value')?.getError('required')">Value Required</p>
+                        </div>
+                    </div>
+                    <button class="btn-main w-100 mt-3">Add Coupon</button>
+                    
+                    
+                </form>
+            </div>
+        </div>
+        <div class="col-md-7" *ngIf="isUpdate">
+            <div class="px-5">
+                <h2 class="fw-bold">Update Coupon :</h2>
+                <form [formGroup]="upDateCouponForm" (ngSubmit)="updateCoupon()">
+                    <div class="my-2">
+                        <label for="discountCode">Discount Code</label>
+                        <input type="text" id="discountCode" class="form-control" formControlName="discountCode" #discountCode [(ngModel)]="code" #inputUpd>
+                        <div class="alert alert-danger" *ngIf="upDateCouponForm.get('discountCode')?.errors&&(upDateCouponForm.get('discountCode')?.touched || discountCode.value.length>0)">
+                            <p class="mb-0" *ngIf="upDateCouponForm.get('discountCode')?.getError('required')">Discount Code Required</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="numOfRequest">Number Of Request</label>
+                        <input type="number" id="discoundCode" class="form-control" formControlName="numOfRequests" #numOfRequests [(ngModel)]="req" #inputUpd>
+                        <div class="alert alert-danger" *ngIf="upDateCouponForm.get('numOfRequests')?.errors&&(upDateCouponForm.get('numOfRequests')?.touched || numOfRequests.value.length>0)">
+                            <p class="mb-0" *ngIf="upDateCouponForm.get('numOfRequests')?.getError('required')">Number Of Request Required</p>
+                        </div>
+                    </div>
+                   
+                    <div>
+                        <label for="value">Value</label>
+                        <input type="number" id="value" class="form-control" formControlName="value" #value [(ngModel)]="val" #inputUpd>
+                        <div class="alert alert-danger" *ngIf="upDateCouponForm.get('value')?.errors&&(upDateCouponForm.get('value')?.touched || value.value.length>0)">
+                            <p class="mb-0" *ngIf="upDateCouponForm.get('value')?.getError('required')">Value Required</p>
+                        </div>
+                    </div>
+                    <button class="btn-main w-100 mt-3">Update Coupon</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        
+            <div class="w-100">
+                <div class="w-50 position-relative mb-3 mx-auto">
+                    <i class="fa-solid fa-magnifying-glass position-absolute text-muted"></i>
+                <input type="search" [placeholder]="searchPlaceholder" class="form-control w-100 py-2 p-1 ps-4" (keyup)="searchEngine(searchText)" [(ngModel)]="searchText">
+                </div>
+            </div>
+            
+        
+        <div class="col-md-12">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr class="text-center">
+                        <th>id</th>
+                        <th>discountCode</th>
+                        <th class="hideEle">numOfRequests</th>
+                        <th class="hideEle">discountType</th>
+                        <th class="hideEle">value</th>
+                        <th class="hideEle">active</th>
+                        
+                        <th class="hideEle">Deactivate</th>
+                        <th>Delete</th>
+                        <th>Update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let coupon of  allCoupons|searchCoupons:searchText" class="text-center">
+                        <td>{{coupon.id}}</td>
+                        <td>{{coupon.discountCode|upperText}}</td>
+                        <td class="hideEle">{{coupon.numOfRequests}}</td>
+                        <td class="hideEle">{{coupon.discountType}}</td>
+                        <td class="hideEle">{{coupon.value}}</td>
+                        <td class="hideEle" [ngClass]="coupon.active=='True'?'text-success':'text-danger'">{{coupon.active}}</td>
+                        
+                        <td class="hideEle"><button class="btn btn-outline-warning" (click)="deactivateCoupon(coupon.id)">Deactivate</button></td>
+                        <td><button class="btn btn-outline-danger" (click)="deleteCoupon(coupon.id)">Delete</button></td>
+                        <td><button class="btn btn-outline-light" (click)="update1Step(coupon.id)">Update</button></td>
+                    </tr>
+                </tbody>
+              </table>
+              
+        </div>
+    </div>
+</section>

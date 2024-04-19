@@ -1,0 +1,57 @@
+
+    <section>
+        <div class="navSide bg-main ps-3 py-4 overflow-hidden z-3" #navbarSide>
+            <div class="mb-5 ps-3 d-flex">
+                <i class="fa-solid fa-heart-pulse me-0"></i>
+                <div>
+                    <span *ngIf="isOpen" class="fw-bold text-white fa-xl position-relative"><span>Doc</span><span class="text-info tOfDoctor">T</span><span class="ms-3">or</span><span class="text-info">s</span></span>
+                </div>
+            </div>
+            <div class="options">
+                <div routerLink="/dashboard">
+                    <i class="fa-solid fa-house-chimney"></i>
+                    <span *ngIf="isOpen">Dashboard</span>
+                </div>
+                <div routerLink="allDoctors">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <span *ngIf="isOpen">Doctors</span>
+                </div>
+                <div routerLink="allPatients">
+                    <i class="fa-solid fa-hospital-user"></i>
+                    <span *ngIf="isOpen">Patients</span>
+                </div>
+                <div routerLink="coupons">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                    <span *ngIf="isOpen">Coupons</span>
+                </div>
+                <div routerLink="addDoctors">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span *ngIf="isOpen">Add Doctor</span>
+                </div>
+                <div (click)="signOut()">
+                    <i class="fa-solid fa-door-closed"></i>
+                    <span *ngIf="isOpen">Sign Out</span>
+                </div>
+            </div>
+        
+        </div>
+        
+       
+        <div class="navbarTop d-flex align-items-center fixed-top" #navTopToggle>
+            <i class="fa-solid fa-bars ms-3" (click)="openTab(navbarSide,navTopToggle,content)"></i>
+            <div class="w-25 position-relative">
+                <i class="fa-solid fa-magnifying-glass position-absolute text-muted"></i>
+                <input type="search" placeholder="Search ..." class="form-control w-100 d-block mx-auto p-1 ps-4">
+               
+            </div>
+        </div>
+        <div class="container content" #content>
+           
+            <router-outlet></router-outlet>
+           
+        </div>
+    </section>
+        
+
+        
+   

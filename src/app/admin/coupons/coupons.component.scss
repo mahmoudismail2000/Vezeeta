@@ -1,0 +1,35 @@
+.alert{
+    margin-top: 5px;
+}
+.fa-magnifying-glass{
+    font-size: 17px;
+    top: 12px;
+    left: 5px;
+}
+
+
+@media all and (max-width:575px){
+    .hideEle{
+        display: none !important;
+    }
+
+}
+
+// @media all and (min-width:576px) and (max-width:767px){
+//     .hideEle{
+//         display: none !important;
+//     }
+
+// }
+// @media all and (min-width:768px) and (max-width:991px){
+//     .hideEle{
+//         display: none !important;
+//     }
+
+// }
+// @media all and (min-width:992px) and (max-width:1199px){
+//     .hideEle{
+//         display: none !important;
+//     }
+
+// }

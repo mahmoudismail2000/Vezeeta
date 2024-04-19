@@ -1,0 +1,118 @@
+.navSide{
+    position: fixed;
+    width: 250px;
+    height: 100vh;
+    color: white;
+    transition: all .5s;
+}
+i{
+    width: 50px;
+    font-size: 25px;
+    margin-right: 20px;
+
+}
+.options{
+    div{
+        height: 50px;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        padding-left: 10px !important;
+        position: relative; 
+        &:hover{
+            background-color: white;
+            color: #2B2589;
+            border-top-left-radius: 50px;
+            border-bottom-left-radius: 50px;
+            &::before{
+                content: '';
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                background-color: transparent;
+                border-radius: 50%;
+                top: -40px;
+                right: 0px;
+                pointer-events: none;
+                box-shadow: 25px 25px 0 10px white;
+                
+            }
+            &::after{
+                content: '';
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                background-color: transparent;
+                border-radius: 50%;
+                bottom: -40px;
+                right: 0px;
+                pointer-events: none;
+                box-shadow: 25px -25px 0 10px white;
+                
+            }
+        }
+
+    }
+}
+
+.navbarTop{
+    width: 100%;
+    height: 60px;
+    margin-left: 250px !important;
+    background-color: rgb(242, 242, 242);
+    transition: all .5s;
+}
+
+
+.dashboard{
+    min-height: 100vh;
+    
+}
+.fa-magnifying-glass{
+    font-size: 17px;
+    top: 10px;
+    left: 5px;
+}
+.sideWidthToggle{
+    width: 90px;
+}
+
+.navbarTopWidthToggle{
+    margin-left: 90px !important;
+}
+.options{
+    transition: all 1s;
+}
+.content{
+    width: 100%;
+    padding-top: 70px !important;
+    padding-left: 200px !important;
+    transition: all .5s;
+}
+.contentToggle{
+    padding-left: 30px !important;
+}
+.tOfDoctor{
+    position: absolute;
+    top:12px;
+    left: 45px;
+    &::after{
+        content: '';
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        top: 12px;
+        left: 5px;
+        background-color: rgb(205, 12, 12);
+        border-radius: 100%;
+       
+    }
+}
+
+@media all and (max-width:756px){
+    .content{
+        padding-left: 100px !important;
+    }
+
+}

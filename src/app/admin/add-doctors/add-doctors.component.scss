@@ -1,0 +1,28 @@
+
+.fa-caret-down{
+    top: 15px;
+    right: 10px;
+}
+label{
+    img{
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+    }
+    span{
+        cursor: pointer;
+
+    }
+}
+                
+.btn:hover{
+    background-color: #2B2589 !important;
+    
+}
+
+@media screen and (max-width:850px){
+    .col-md-7{
+        display: none;
+    }
+
+}

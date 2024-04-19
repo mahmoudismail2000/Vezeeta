@@ -1,0 +1,52 @@
+<section class="dashboardPage pt-3">
+    <div class="row gy-4">
+        <div class="col-md-3">
+            <div class="shadow rounded-3 p-4 d-flex flex-column align-items-center option">
+                <div class="w-100 d-flex justify-content-between">
+                    <span class="fa-2xl fw-bold text-white">{{numOfDoctors}}</span>
+                   <i class="fa-solid fa-user-doctor fa-2xl text-white"></i>
+                </div>
+                <div class="pt-5">
+                    <span class="fa-2xl fw-bold text-info ">Doctors</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="shadow rounded-3 p-4 d-flex flex-column align-items-center option">
+                <div class="w-100 d-flex justify-content-between">
+                    <span class="fa-2xl fw-bold text-white">{{numOfPatients}}</span>
+                   <i class="fa-solid fa-hospital-user fa-2xl text-white"></i>
+                </div>
+                <div class="pt-5">
+                    <span class="fa-2xl fw-bold text-info">Patients</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="shadow rounded-3 p-4 d-flex flex-column align-items-center option">
+                <div class="w-100 d-flex justify-content-between">
+                    <span class="fa-2xl fw-bold text-white">{{numOfRequests}}</span>
+                    <i class="fa-solid fa-code-pull-request fa-2xl text-white"></i>
+                </div>
+                <div class="pt-5">
+                    <span class="fa-2xl fw-bold text-info ">Requests</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 d-flex flex-column justify-content-center rounded-3 bg-body-secondary">
+            <label for="time" class="fa-xl fw-bold pb-4">Duration Time ...?</label>
+            <div class="position-relative">
+                <select  id="time" class="form-control" (change)="getDurationTime($event)">
+                    <option value="last24hours">Last 24 Hours</option>
+                    <option value="lastweek">Last Week</option>
+                    <option value="lastmonth">Last Month</option>
+                    <option value="lastyear">Last Year</option>
+                </select>
+                <i class="fa-solid fa-caret-down position-absolute fa-xl"></i>
+            </div>
+        </div>
+    </div>
+
+
+</section>
