@@ -32,7 +32,6 @@ export class LoginComponent {
   login():void
   {
     this.isLoading=true
-    console.log(this.loginForm);
     
     if(this.loginForm.valid){
       this._AuthService.login(this.loginForm.value).subscribe({

@@ -1,20 +1,20 @@
-import { SpecializationService } from 'src/app/core/services/specialization.service';
-import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AdminService } from 'src/app/core/services/admin.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  AppearanceAnimation,
+  DialogLayoutDisplay,
+  DisappearanceAnimation,
+  ToastNotificationInitializer,
+  ToastPositionEnum,
+  ToastProgressBarEnum,
+  ToastUserViewTypeEnum,
+} from '@costlydeveloper/ngx-awesome-popup';
 import { ToastrService } from 'ngx-toastr';
 import { Specialize } from 'src/app/core/interfaces/specialize';
-import {
-  ToastNotificationInitializer,
-  DialogLayoutDisplay,
-  ToastUserViewTypeEnum,
-  ToastProgressBarEnum,
-  DisappearanceAnimation,
-  AppearanceAnimation,
-  ToastPositionEnum,
-} from '@costlydeveloper/ngx-awesome-popup';
+import { AdminService } from 'src/app/core/services/admin.service';
+import { SpecializationService } from 'src/app/core/services/specialization.service';
 
 
 
@@ -27,7 +27,7 @@ import {
   styleUrls: ['./add-doctors.component.scss']
 })
 export class AddDoctorsComponent implements OnInit{
-  constructor(private _AdminService:AdminService,private _ToastrService:ToastrService,private _SpecializationService:SpecializationService){}
+  constructor(private _AdminService:AdminService,private _SpecializationService:SpecializationService){}
   selectedFile:any
   specializations:Specialize[]=[]
   value!:string

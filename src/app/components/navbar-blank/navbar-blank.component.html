@@ -10,10 +10,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0 w-50 d-flex justify-content-center">
-            <!-- <li class="nav-item pe-3 w-75 position-relative">
-              <input type="search" class="form-control ps-4" placeholder="Search ...">
-              <i class="fa-solid fa-magnifying-glass position-absolute text-muted"></i>
-            </li> -->
+            
             <li class="nav-item pe-2">
               <a class="nav-link text-white " role="button" routerLink="/home" routerLinkActive="active-link">Home</a>
             </li>
@@ -38,8 +35,9 @@
           
           </ul>
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center">
-          <li class="nav-item me-4">
-            <a class="nav-link px-3 rounded-5 border border-2 border-white text-white" role="button" [routerLink]="[roleOfUser=='Doctor'?'/doctorProfile':'/patientProfile',idOfUser]" routerLinkActive="active-link"><i [class]="roleOfUser=='Doctor'?'fa-solid fa-user-doctor fa-xl':'fa-solid fa-user fa-xl'"></i></a>
+          
+          <li class="nav-item pe-2" (click)="signOut()">
+            <a class="nav-link text-white fa-xl" role="button" routerLink="/login">SignOut</a>
           </li>
 
          
@@ -50,9 +48,17 @@
             <a href="https://wa.me/+0201067764726" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
           </li>
-          <li class="nav-item ps-2" (click)="signOut()">
-            <a class="nav-link text-white fa-xl" role="button" routerLink="/login">SignOut</a>
+          <li class="nav-item ms-4">
+            <a class="nav-link profileUser" role="button" *ngIf="roleOfUser=='Doctor'" [routerLink]="[roleOfUser=='Doctor'?'/doctorProfile':'/patientProfile',idOfUser]">
+              <p-chip styleClass="my-chip" [label]="doctorData.fullName" [image]="'https://localhost:7198/images/'+doctorData.photoPath" alt="Avatar image"></p-chip>
+            </a>
+            <a class="nav-link profileUser" role="button" *ngIf="roleOfUser=='Patient'" [routerLink]="[roleOfUser=='Patient'?'/patientProfile':'/patientProfile',idOfUser]">
+              <p-chip styleClass="my-chip" [label]="patientData.details.fullName.slice(0,30)" [image]="patientData.details.photoPath?'https://localhost:7198/images/'+patientData.details.photoPath:'./assets/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png'" alt="Avatar image"></p-chip>
+            </a>
+            
+            <!-- <i [class]="roleOfUser=='Doctor'?'fa-solid fa-user-doctor fa-xl':'fa-solid fa-user fa-xl'"></i> -->
           </li>
+          
           
         
         </ul>

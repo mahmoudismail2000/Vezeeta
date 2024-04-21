@@ -13,7 +13,9 @@ $font-family: "Encode Sans Expanded", sans-serif;
     -moz-box-shadow: -2px 4px 14px -1px rgba(0,0,0,0.7);
 }
 
-
+.cursor{
+    cursor: pointer;
+}
 
 .bg-main{
     background-color: $main-color;

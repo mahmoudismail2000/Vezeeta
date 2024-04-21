@@ -42,6 +42,8 @@ import { ScrollTopModule } from 'primeng/scrolltop';
     ToastNotificationConfigModule.forRoot(), // Needed for instantiating toast notifications.
     NgxScrollTopModule,
     ScrollTopModule
+    
+    
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:MyHttpInterceptor,multi:true},

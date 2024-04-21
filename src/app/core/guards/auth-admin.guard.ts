@@ -8,6 +8,10 @@ export const authAdminGuard: CanActivateFn = (route, state) => {
   _AuthService.getUserData()
   if(localStorage.getItem('eToken')!=null&&_AuthService.userData.Role=='Admin'){
     return true;
+  }else if(localStorage.getItem('eToken')!=null&&_AuthService.userData.Role!='Admin'){
+    _Router.navigate(['/home'])
+    return false
+
   }
   else{
     _Router.navigate(['/login'])
