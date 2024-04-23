@@ -15,4 +15,19 @@ export class DoctorService {
     return this._HttpClient.get(this.baseUrl+`Doctors/GetById/${id}`)
 
   }
+  getAllBookings(day:string):Observable<any>
+  {
+    if(day==''){
+      return this._HttpClient.get(this.baseUrl+`Bookings/DoctorGetAll`)
+    }else{
+      return this._HttpClient.get(this.baseUrl+`Bookings/DoctorGetAll?Day=${day}`)
+    }
+
+  }
+
+  confirmCheckUp(id:number):Observable<any>
+  {
+    return this._HttpClient.put(this.baseUrl+`Bookings/ConfirmCheckUp?id=${id}`,{})
+
+  }
 }

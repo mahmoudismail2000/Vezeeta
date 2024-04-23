@@ -1,1 +1,77 @@
-<p>all-doctors-in-specialize works!</p>
+<section class="my-5">
+    <h1 class="h3 pb-4 text-center" *ngIf="allDoctorsInSpecialization.length>0">{{specializeName}} Doctors</h1>
+    <h1 class="h3 pt-5 text-center" *ngIf="allDoctorsInSpecialization.length==0">Not Found Doctors in {{specializeName}}</h1>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+            <div class="row shadow-lg rounded-4 mb-4 pt-5 pb-3 px-3 bg-white" *ngFor="let doctor of allDoctorsInSpecialization">
+                <div class="col-md-2">
+                    <div>
+                        <img [src]="'https://localhost:7198/images/'+doctor.photoPath" height="120" class="w-100 rounded-5" [alt]="doctor.fullName">
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="d-flex align-items-center">
+                        <h3><span class="text-primary h5">Doctor </span>{{doctor.fullName}}</h3>
+                        <span class="p-2 bg-primary d-flex justify-content-center align-items-center rounded-circle ms-2"><i class="fa-solid fa-phone h6 text-white mb-0"></i></span>
+                    </div>
+                    
+                    <div class="mb-2">
+                        <i class="fa-solid fa-star text-warning"></i>
+                        <i class="fa-solid fa-star text-warning"></i>
+                        <i class="fa-solid fa-star text-warning"></i>
+                        <i class="fa-solid fa-star text-warning"></i>
+                        <i class="fa-solid fa-star-half-stroke text-warning"></i>
+                    </div>
+                    <span>Overall Rating From 250 Visitors</span>
+                    <div class="mt-3">
+                        <i class="fa-solid fa-stethoscope me-3 text-primary"></i>
+                        <span><span class="text-muted">Specialize : </span> {{doctor.specialize}}</span>
+                    </div>
+                    <div class="my-2">
+                        <i class="fa-solid fa-money-bill-wave me-3 text-primary"></i>
+                        <span><span class="text-muted">Fees : </span>{{doctor.price|currency:'USD'}}</span>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-phone me-3 text-primary"></i>
+                        <span><span class="text-muted">Phone : </span>15868 - Cost of Regular Call</span>
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="w-100">
+                        <owl-carousel-o [options]="appointments">
+
+                            <ng-container *ngFor="let days of doctor.appointments">
+                              <ng-template carouselSlide>
+                                
+                                   <div class="ms-4 d-flex flex-column justify-content-center align-items-center border border-1 rounded-4 overflow-hidden">
+                                    <span class="bg-primary text-white fw-bold w-100 py-2 text-center">{{days.day}}</span>
+                                    <div class="times d-flex flex-column align-items-center position-relative" #times>
+                                        <div class="d-flex flex-column pt-2">
+                                            <span class="timeBook px-3" (click)="booking(days.day,times.id,times.time)" *ngFor="let times of days.times" [id]="times.id">{{times.time}}</span>
+                                        </div>
+                                        <span class="text-primary cursor options px-4" #option (click)="moreAppointments(times,option,isShowMsg)"> More </span>
+                                    </div>
+                                    <span class="bg-danger text-white fw-bold w-100 py-2 text-center">Book</span>
+                                   </div>
+                                   
+
+                               
+                              </ng-template>
+                            </ng-container>
+                        
+                          </owl-carousel-o>
+                          
+                            <div class="justify-content-center d-none"#isShowMsg>
+                                <span class="text-danger" >Please Select an Appointment</span>
+                            </div>
+                          
+                          <div class="w-100 d-flex justify-content-center">
+                            <span class="text-muted">Appointment reservation</span>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

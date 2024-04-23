@@ -1,5 +1,5 @@
 import { Component,Inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import {Subscription} from 'rxjs';
 import {DialogBelonging} from '@costlydeveloper/ngx-awesome-popup';
 import { BookAppointment } from 'src/app/core/interfaces/book-appointment';
@@ -7,8 +7,18 @@ import { AdminService } from 'src/app/core/services/admin.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Coupon } from 'src/app/core/interfaces/coupon';
 import { PatientService } from 'src/app/core/services/patient.service';
-import * as moment from 'moment';
+
 import { FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import { BookingInAllPatient } from 'src/app/core/interfaces/booking-in-all';
+import {
+    AppearanceAnimation,
+    DialogLayoutDisplay,
+    DisappearanceAnimation,
+    ToastNotificationInitializer,
+    ToastPositionEnum,
+    ToastProgressBarEnum,
+    ToastUserViewTypeEnum,
+  } from '@costlydeveloper/ngx-awesome-popup';
 @Component({
   selector: 'app-patient-book',
   standalone: true,
@@ -25,13 +35,13 @@ export class PatientBookComponent {
     
     bookData:BookAppointment={} as BookAppointment
     allCoupons:Coupon[]=[]
+    allPatientBookings:BookingInAllPatient[]=[]
     numberOfRequest!:number
     datesOfDay!:string[]
     transformedTime!:string;
     private subscriptions: Subscription = new Subscription();
     bookForm:FormGroup=new FormGroup({
         appointmentTimeId:new FormControl(''),
-        discountCode:new FormControl(''),
         appointmentRealTime:new FormControl('')
     })
     
@@ -40,9 +50,6 @@ export class PatientBookComponent {
 
     ngOnInit(): void {
 
-
-
-        this.bookForm.value.appointmentTimeId=50
 
         this._AdminService.getAllCoupons().subscribe({
             next:(response)=>{
@@ -57,8 +64,12 @@ export class PatientBookComponent {
         })
         this._PatientService.getAllBookings().subscribe({
             next:(response)=>{
-                console.log(response.length);
-                this.numberOfRequest=response.length
+                this.allPatientBookings=response
+                let getCompletedRequests=this.allPatientBookings.filter((book)=>book.bookingStatus.includes('Completed'))
+                this.numberOfRequest=getCompletedRequests.length
+                console.log( this.numberOfRequest);
+                
+                
                
             },
             error:(err:HttpErrorResponse)=>{
@@ -84,35 +95,34 @@ export class PatientBookComponent {
 
         const timeString = this.bookData.appointmentTime.slice(0,4); // Input time string
         this.transformedTime = this.transformTimeFormat(timeString);
-
-        const dateBook:Date=new Date()
-        console.log('Monday',dateBook.getMonth()+1,dateBook.getFullYear());
-        this.getDatesForDayName(this.bookData.appointmentDay,dateBook.getMonth()+1,dateBook.getFullYear())
+        this.getAllDatesForDayName(this.bookData.appointmentDay)
+        
     }
     
     ngOnDestroy(): void {
         // Care about memory and close all subscriptions.
         this.subscriptions.unsubscribe();
     }
-    getDatesForDayName(dayName:string, month:number, year:number): Date[] {
+    getAllDatesForDayName(dayName: string): Date[] {
+        const currentDate = new Date();
+        const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate(); // Get total days in current month
+      
+        
+        
         const dates: Date[] = [];
-        const startDateOfMonth = moment(`${year}-${month}-01`, 'YYYY-MM-DD');
-        const endDateOfMonth = moment(startDateOfMonth).endOf('month');
-        const currentDate = moment(startDateOfMonth);
     
-        while (currentDate.isSameOrBefore(endDateOfMonth)) {
-          if (currentDate.format('dddd') === dayName) {
-            dates.push(currentDate.toDate());
+        // Iterate over each date in the current month
+        for (let day = 1; day <= daysInMonth; day++) {
+          const date = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);   // Get date for day
+          
+          if (date.toLocaleDateString('en', { weekday: 'long' }) === dayName) {
+            dates.push(date); // Add the date if its day name matches the desired day name
           }
-          currentDate.add(1, 'day');
         }
-       
-        const realDayOfMonth=dates.map((date)=>date.toISOString().slice(0,11)+`${this.transformedTime}`)
+        const datePipe=new DatePipe('en-us')
+        const realDayOfMonth=dates.map((date)=>datePipe.transform(date,'yyyy-MM-dd')+'T'+`${this.transformedTime}`)
         this.datesOfDay=realDayOfMonth
         console.log(this.datesOfDay);
-        
-        
-        
         
         return dates;
       }
@@ -135,23 +145,67 @@ export class PatientBookComponent {
     addAppointment(appId:HTMLInputElement,discount:HTMLSelectElement,realTime:HTMLSelectElement):void
     {
         this.bookForm.value.appointmentTimeId=appId.value
-        this.bookForm.value.discountCode=discount.value
+        if(discount.value!=='Select Coupon'){
+            this.bookForm.value.discountCode=discount.value
+        }
         this.bookForm.value.appointmentRealTime=realTime.value
         console.log(this.bookForm.value);
         this._PatientService.bookAnAppointment(this.bookForm.value).subscribe({
             next:(response)=>{
-                console.log(response);
+                if(response){
+                    const newToastNotification = new ToastNotificationInitializer();
+
+          newToastNotification.setTitle('Booking !');
+          newToastNotification.setMessage('Booking Successfully !')
+          // Choose layout color type
+          newToastNotification.setConfig({
+      autoCloseDelay: 2500, // optional
+      textPosition: 'right', // optional
+      layoutType: DialogLayoutDisplay.SUCCESS, // SUCCESS | INFO | NONE | DANGER | WARNING
+      progressBar: ToastProgressBarEnum.NONE, // INCREASE | DECREASE | NONE
+      toastUserViewType: ToastUserViewTypeEnum.STANDARD, // STANDARD | SIMPLE
+      animationIn: AppearanceAnimation.ELASTIC, // BOUNCE_IN | SWING | ZOOM_IN | ZOOM_IN_ROTATE | ELASTIC | JELLO | FADE_IN | SLIDE_IN_UP | SLIDE_IN_DOWN | SLIDE_IN_LEFT | SLIDE_IN_RIGHT | NONE
+      animationOut: DisappearanceAnimation.SLIDE_OUT_RIGHT, // BOUNCE_OUT | ZOOM_OUT | ZOOM_OUT_WIND | ZOOM_OUT_ROTATE | FLIP_OUT | SLIDE_OUT_UP | SLIDE_OUT_DOWN | SLIDE_OUT_LEFT | SLIDE_OUT_RIGHT | NONE
+       // TOP_LEFT | TOP_CENTER | TOP_RIGHT | TOP_FULL_WIDTH | BOTTOM_LEFT | BOTTOM_CENTER | BOTTOM_RIGHT | BOTTOM_FULL_WIDTH
+      toastPosition: ToastPositionEnum.TOP_RIGHT,
+          });
+          // Simply open the popup
+          newToastNotification.openToastNotification$();
+
+                }
                 
 
             },error:(err:HttpErrorResponse)=>{
                 console.log(err);
-                
+                const newToastNotification = new ToastNotificationInitializer();
+
+          newToastNotification.setTitle('Booking !');
+          newToastNotification.setMessage(`${err.error}`)
+          // Choose layout color type
+          newToastNotification.setConfig({
+      autoCloseDelay: 2500, // optional
+      textPosition: 'right', // optional
+      layoutType: DialogLayoutDisplay.DANGER, // SUCCESS | INFO | NONE | DANGER | WARNING
+      progressBar: ToastProgressBarEnum.NONE, // INCREASE | DECREASE | NONE
+      toastUserViewType: ToastUserViewTypeEnum.STANDARD, // STANDARD | SIMPLE
+      animationIn: AppearanceAnimation.ELASTIC, // BOUNCE_IN | SWING | ZOOM_IN | ZOOM_IN_ROTATE | ELASTIC | JELLO | FADE_IN | SLIDE_IN_UP | SLIDE_IN_DOWN | SLIDE_IN_LEFT | SLIDE_IN_RIGHT | NONE
+      animationOut: DisappearanceAnimation.SLIDE_OUT_RIGHT, // BOUNCE_OUT | ZOOM_OUT | ZOOM_OUT_WIND | ZOOM_OUT_ROTATE | FLIP_OUT | SLIDE_OUT_UP | SLIDE_OUT_DOWN | SLIDE_OUT_LEFT | SLIDE_OUT_RIGHT | NONE
+       // TOP_LEFT | TOP_CENTER | TOP_RIGHT | TOP_FULL_WIDTH | BOTTOM_LEFT | BOTTOM_CENTER | BOTTOM_RIGHT | BOTTOM_FULL_WIDTH
+      toastPosition: ToastPositionEnum.TOP_RIGHT,
+          });
+          // Simply open the popup
+          newToastNotification.openToastNotification$();
 
             }
         })
         
         this.dialogBelonging.eventsController.close();
-    }     
+    }   
+    
+    closeBooking():void
+    {
+        this.dialogBelonging.eventsController.close();
+    }
       
 
 }

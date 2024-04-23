@@ -1,1 +1,61 @@
-<p>doctor-profile works!</p>
+<section class="d-flex flex-column justify-content-center align-items-center my-5 px-5">
+    <h1>All Bookings</h1>
+    <div class="row my-5">
+        <div class="col-md-2">
+            <div>
+                <div class="accordion accordion-flush shadow-lg rounded-4 overflow-hidden" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed text-main px-2  border-bottom border-primary" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                          
+                          <i class="fa-regular fa-calendar-days text-main h6 me-3 mt-2"></i>
+                        Days
+                      </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushExample">
+                      <div class="w-75 m-auto my-3">
+                          <div class="d-flex justify-content-between mb-3" *ngFor="let day of allDaysForDoctor">
+                              <label class="form-check-label cursor" [for]="day">{{day}}</label>
+                              <input class="form-check-input cursor" type="radio" name="day" [value]="day" [(ngModel)]="daySearch" (change)="searchByDay()">
+                          </div>
+                          
+                          
+                      </div>
+                    </div>
+                </div>
+                  </div>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <p-table [value]="allBookings" [tableStyle]="{'min-width': '50rem'}">
+                <ng-template pTemplate="header">
+                    <tr class="text-center">
+                        <th>Image</th>
+                        <th>Patient</th>
+                        <th>phone</th>
+                        <th>Appointment</th>
+                        <th>gender</th>
+                        <th>bookingStatus</th>
+                        <th>Checkup</th>
+                        
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-booking>
+                    <tr class="text-center">
+                        <td class="text-center"><img [src]="'https://localhost:7198/images/'+booking.photoPath" class="w-100 rounded-5" height="100" [alt]="booking.patientName"></td>
+                        <td>{{booking.patientName}}</td>
+                        <td>{{booking.phone}}</td>
+                        <td>{{booking.appointment}}</td>
+                        <td>{{booking.gender}}</td>
+                        <td [ngClass]="{'text-text-success':booking.bookingStatus=='Completed','text-warning':booking.bookingStatus=='Pending','text-success':booking.bookingStatus=='Completed'}">{{booking.bookingStatus}}</td>
+                        <td><button class="btn btn-main" (click)="openConfirmBox(booking.id)">Confirm</button></td>
+                        
+                       
+                    </tr>
+                </ng-template>
+        
+            </p-table>
+        </div>
+    </div>
+
+</section>

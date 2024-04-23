@@ -3,14 +3,14 @@
         <div class="col-md-4">
             <div class="rounded-4 overflow-hidden">
                 
-                <p-image [src]="'https://localhost:7198/images/'+doctorDetails.photoPath" [alt]="doctorDetails.firstName+' '+doctorDetails.lastName" height="220" class="w-100" [preview]="true"></p-image>
+                <p-image [src]="'https://localhost:7198/images/'+doctorDetails.photoPath" [alt]="doctorDetails.fullName" height="220" class="w-100" [preview]="true"></p-image>
             </div>
         </div>
         <div class="col-md-8">
             <div class="content">
                 <div>
                     <i class="fa-solid fa-user me-2"></i>
-                    <p class="text-capitalize">Full Name : <span>{{doctorDetails.firstName+' '+doctorDetails.lastName}}</span></p>
+                    <p class="text-capitalize">Full Name : <span>{{doctorDetails.fullName}}</span></p>
                 </div>
                 <div>
                     <i class="fa-solid fa-envelope me-2"></i>

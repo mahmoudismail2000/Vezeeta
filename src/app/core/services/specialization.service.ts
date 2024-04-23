@@ -16,6 +16,10 @@ export class SpecializationService {
   {
     return this._HttpClient.get(this.baseUrl+`Specializations/GetByName?name=${specializationsName}`)
   }
+  getSpecializationById(id:number):Observable<any>
+  {
+    return this._HttpClient.get(this.baseUrl+`Specializations/GetById?id=${id}`)
+  }
   getAllSpecializations():Observable<any>
   {
     return this._HttpClient.get(this.baseUrl+'Specializations/GetAll')

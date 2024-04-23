@@ -83,12 +83,13 @@ position: relative;
     
 }
 
+
 }
 .topDoctor{
     background-color: #F0F0F0;
 }
 .allDoctors{
-    width: 80%;
+    width: 85%;
 }
 
 .timeBook{
@@ -99,5 +100,22 @@ position: relative;
         color: white;
         border-radius: 10px;
         
+    }
+}
+.times{
+    height: 224px;
+    overflow: hidden;
+    transition: all .5s;
+}
+.options{
+    position: absolute;
+    bottom: 0px;
+    background-color: white;
+}
+
+
+@media all and (max-width:1100px){
+    .navButton{
+        width: 100% !important;
     }
 }

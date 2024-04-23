@@ -1,1 +1,35 @@
-<p>patient-profile works!</p>
+<section class="d-flex flex-column justify-content-center align-items-center my-5">
+    <h1>All Bookings</h1>
+    <div class="w-75 mt-3">
+        <p-table [value]="allBookings" [tableStyle]="{'min-width': '60rem'}">
+            <ng-template pTemplate="header">
+                <tr class="text-center">
+                    <th>Image</th>
+                    <th>Doctor</th>
+                    <th>Specialize</th>
+                    <th>Appointment Real Time</th>
+                    <th>Day</th>
+                    <th>Price</th>
+                    <th>bookingStatus</th>
+                    <th>Cancel</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-booking>
+                <tr class="text-center">
+                    <td><img [src]="'https://localhost:7198/images/'+booking.photoPath" class="w-100 rounded-5" height="100" [alt]="booking.doctorName"></td>
+                    <td>{{booking.doctorName}}</td>
+                    <td>{{booking.specialize}}</td>
+                    <td>{{booking.appointmentRealTime}}</td>
+                    <td>{{booking.day}}</td>
+                    <td>{{booking.price}}</td>
+                    <td [ngClass]="{'text-danger':booking.bookingStatus=='Cancelled','text-warning':booking.bookingStatus=='Pending','text-success':booking.bookingStatus=='Completed'}">{{booking.bookingStatus}}</td>
+                    <td><button class="btn btn-danger" (click)="openConfirmBox(booking.id)">Cancel</button></td>
+                    
+                   
+                </tr>
+            </ng-template>
+    
+        </p-table>
+    </div>
+
+</section>

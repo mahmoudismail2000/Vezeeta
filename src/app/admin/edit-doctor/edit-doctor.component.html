@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="pt-5">
-                <img  [src]="'https://khatabzeta13.azurewebsites.net/images/'+doctorData.photoPath" class="w-100 rounded-5" alt="" *ngIf="isHideServerImage">
+                <img  [src]="'https://localhost:7198/images/'+doctorData.photoPath" class="w-100 rounded-5" alt="" *ngIf="isHideServerImage">
                 <img  [src]="imgPath" *ngIf="imgPath" class="w-100 rounded-5" alt="">
             </div>
         </div>
@@ -14,7 +14,7 @@
                       <div class="w-100 spec">
                         <div class="d-flex align-items-center">
                           <i class="fa-solid fa-user text-muted me-2"></i>
-                          <input type="text" formControlName="firstName" placeholder="First Name *" [value]="doctorData.firstName" class="form-control w-100 pb-0 mb-2">
+                          <input type="text" formControlName="firstName" placeholder="First Name *" [value]="doctorData.fullName?.split(' ')?.slice(0,1)?.join()" class="form-control w-100 pb-0 mb-2">
                         </div>
                         
                         
@@ -22,7 +22,7 @@
                       <div class="w-100 spec my-2">
                           <div class="d-flex align-items-center">
                             <i class="fa-solid fa-user text-muted me-2"></i>
-                            <input type="text" formControlName="lastName"  placeholder="Second Name *" [value]="doctorData.lastName" class="form-control w-100 pb-0 mb-2">
+                            <input type="text" formControlName="lastName"  placeholder="Second Name *" [value]="doctorData.fullName?.split(' ')?.slice(1,2)?.join()" class="form-control w-100 pb-0 mb-2">
                           </div>
                           
                         </div>
@@ -54,7 +54,7 @@
                       <div class="w-100 d-flex justify-content-between">
                         <div class="w-50">
                           <label for="specializationId">Specialize :</label>
-                              <input type="text" formControlName="specializationId" class="form-control" id="specializationId" [value]="doctorData.specialize">
+                              <input type="text" formControlName="specializationId" class="form-control" id="specializationId" [value]="doctorData.specialize" readonly>
                         </div>
                         <div class="mt-2">
                           <label for="doctorImage">

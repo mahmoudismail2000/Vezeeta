@@ -31,4 +31,15 @@ export class PatientService {
     return this._HttpClient.post(this.baseUrl+'Bookings/Book',bookData)
 
   }
+  cancelAppointment(id:number):Observable<any>
+  {
+    return this._HttpClient.put(this.baseUrl+`Bookings/Cancel?id=${id}`,{})
+
+  }
+  getAllDoctorsInSpecialization(id:number):Observable<any>
+  {
+    return this._HttpClient.get(`${this.baseUrl}Doctors/PatientGetAll?SpecializeId=${id}`)
+
+  }
+
 }

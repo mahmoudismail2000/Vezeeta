@@ -58,16 +58,19 @@ export class EditDoctorComponent implements OnInit{
         console.log(response.get('id'));
         this._AdminService.getDoctorById(this.docId).subscribe({
           next:(response)=>{
+            this.doctorData=response 
             console.log(response);
-            this.doctorData=response
             this.gender=this.doctorData.gender
             this.date=this.doctorData.dateOfBirth
-            this.editForm.value.firstName=this.doctorData.firstName
-            this.editForm.value.lastName=this.doctorData.lastName
+            
+            this.editForm.value.firstName=this.doctorData.fullName.split(' ').slice(0,1).join()
+            this.editForm.value.lastName=this.doctorData.fullName.split(' ').slice(1,2).join()
             this.editForm.value.email=this.doctorData.email
             this.editForm.value.phone=this.doctorData.phone
             this.editForm.value.gender=this.doctorData.gender
             this.editForm.value.dateOfBirth=this.doctorData.dateOfBirth
+            console.log(this.editForm.value);
+            
 
             this._SpecializationService.getSpecializationByName(this.doctorData.specialize).subscribe({
               next:(response)=>{

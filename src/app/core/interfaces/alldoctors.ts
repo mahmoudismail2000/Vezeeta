@@ -8,12 +8,10 @@ export interface AllDoctors {
 }
 
 export interface Doctors {
-    dateOfBirth?:string;
+    dateOfBirth:string;
     id:         number;
     photoPath:  string;
-    firstName:   string;
-    fullName?:string;
-    lastName: string;
+    fullName:string;
     email:      string;
     phone:      string;
     specialize: string;

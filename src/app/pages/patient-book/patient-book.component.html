@@ -1,13 +1,14 @@
-<section>
+<section class="p-4">
     <h1 class="h4">Book an appointment</h1>
     <div>
         <div>
+          
             <input type="number" class="form-control" placeholder="Time Id" [value]="bookData.appointmentId"  readonly #appId>
         </div>
         <div class="my-3">
             <select name="" id="" class="form-select" #discount>
                 <option selected disabled>Select Coupon</option>
-                <option  [value]="coupon.discountCode" *ngFor="let coupon of allCoupons" [ngClass]="{'d-none':numberOfRequest<=coupon.numOfRequests,'text-success':coupon.active<='True','text-danger':coupon.active=='False'}">{{coupon.discountCode}} 
+                <option  [value]="coupon.discountCode" *ngFor="let coupon of allCoupons" [ngClass]="{'d-none':numberOfRequest<coupon.numOfRequests,'text-success':coupon.active<='True','text-danger':coupon.active=='False'}">{{coupon.discountCode}} 
                     <span>{{coupon.value}}% Discount</span>
                 </option>
 
@@ -20,7 +21,10 @@
 
             </select>
         </div>
-        <button class="btn btn-main" (click)="addAppointment(appId,discount,realTime)">Add Appointment</button>
+        <div class="my-3 d-flex justify-content-end">
+            <button class="btn btn-danger me-3" (click)="closeBooking()">Close</button>
+            <button class="btn btn-main" (click)="addAppointment(appId,discount,realTime)">Book</button>
+        </div>
     </div>
 
 </section>

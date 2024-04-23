@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { TableModule } from 'primeng/table';
 import { patients } from 'src/app/core/interfaces/all-patient';
 import { AdminService } from 'src/app/core/services/admin.service';
 
 @Component({
   selector: 'app-all-patients',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,TableModule],
   templateUrl: './all-patients.component.html',
   styleUrls: ['./all-patients.component.scss']
 })
