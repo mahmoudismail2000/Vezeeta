@@ -1,27 +1,40 @@
-# Vezeeta
+# Doctors-Website 👨‍🔬
+#### 🔗 Overview : 
+DocTors is a healthcare technology platform that connects patients with healthcare providers and facilitating appointment booking , allowing patients to book appointments with doctors, showing top doctors and specializations based on the number of requests, and enabling doctors to manage appointments and check up on patient bookings. Additionally, the application allows admins to manage doctors and coupons .
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.11.
+#### ⛓ Key Features :
+- User Authentication and Authorization
+- Admin Control Panel 
+- Appointment Booking 
+- Top Doctors and Specializations 
+- Appointment Management for Doctors 
+- Search and Filtering 
+- Doctor Profiles and Reviews .
+#### 🛠 Technologies :
+- HTML5, SASS, Bootstrap 
+- Angular Framework 
+- Angular Animation Forms 
+- Angular HTTP Client for HTTP Requests 
+- Angular Forms for Form Handling 
+- Angular Router and dynamic Routing for Routing
+- PrimeNg
+- Awesome Popup
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+<div>
+  <img src="https://github.com/mahmoudismail2000/Vezeeta/assets/108597788/9b6a4a3c-eaeb-48ff-ab7f-d8a75c7fcf71" width="300px">
+  <img src="https://github.com/mahmoudismail2000/Vezeeta/assets/108597788/588e4fc3-e570-4862-8c8f-2699a65e69cc" width="300px">
+  <img src="https://github.com/mahmoudismail2000/Vezeeta/assets/108597788/a7fc9ce0-72d0-4da0-b5e3-962749051e18" width="300px">
+  <img src="https://github.com/mahmoudismail2000/Vezeeta/assets/108597788/b7c5be3f-0b62-4119-94f8-099f99331b27" width="300px">
+  <img src="https://github.com/mahmoudismail2000/Vezeeta/assets/108597788/9571de00-463d-4ed0-8441-8da9e5926897" width="300px">
+  <img src="https://github.com/mahmoudismail2000/Vezeeta/assets/108597788/9cbc87b5-0827-4930-b1a4-5da43eef4a37" width="300px">
+  <img src="https://github.com/mahmoudismail2000/Vezeeta/assets/108597788/1026ffc3-eaa6-4f7c-bb00-9dff504a9ba1" width="300px">
+  <img src="https://github.com/mahmoudismail2000/Vezeeta/assets/108597788/55740887-80b2-4c67-a628-70773c628e2e" width="300px">
+  <img src="https://github.com/mahmoudismail2000/Vezeeta/assets/108597788/5074e3ee-a1c4-46e6-ba8e-384ed046ec58" width="300px">
+  <img src="https://github.com/mahmoudismail2000/Vezeeta/assets/108597788/957af690-847d-4887-9904-49467a7538c2" width="300px">
+  <img src="https://github.com/mahmoudismail2000/Vezeeta/assets/108597788/65aebeab-512f-4442-b964-95a397bda788" width="300px">
+  <img src="https://github.com/mahmoudismail2000/Vezeeta/assets/108597788/dfb986ee-e859-4794-8f04-4d504f454556" width="300px">
+  <img src="https://github.com/mahmoudismail2000/Vezeeta/assets/108597788/3b5cc2d5-4bbc-4830-a6ef-3864e7d853f8" width="300px">
+  
+</div>
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
