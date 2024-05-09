@@ -43,16 +43,33 @@
             <a href="https://wa.me/+0201067764726" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
           </li>
-          <li class="nav-item ms-4">
-            <a class="nav-link profileUser" role="button" *ngIf="roleOfUser=='Doctor'" [routerLink]="[roleOfUser=='Doctor'?'/doctorProfile':'/patientProfile',idOfUser]">
+          <li class="nav-item ms-4 d-flex align-items-center">
+            <div class="dropdown">
+                <a class="nav-link profileUser" role="button" *ngIf="roleOfUser=='Doctor'">
+                  <p-chip styleClass="my-chip" [label]="doctorData.fullName" [image]="'https://localhost:7198/images/'+doctorData.photoPath" alt="Avatar image"></p-chip>
+                </a>
+                <a class="nav-link profileUser" role="button" *ngIf="roleOfUser=='Patient'" [routerLink]="[roleOfUser=='Patient'?'/patientProfile':'/doctorProfile',idOfUser]">
+                  <p-chip styleClass="my-chip" [label]="patientData.details.fullName.slice(0,30)" [image]="patientData.details.photoPath?'https://localhost:7198/images/'+patientData.details.photoPath:'./assets/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png'" alt="Avatar image"></p-chip>
+                </a>
+              
+              <ul class="dropdown-menu" *ngIf="roleOfUser=='Doctor'">
+                <li><a class="dropdown-item" [routerLink]="[roleOfUser=='Doctor'?'/doctorProfile':'/patientProfile',idOfUser]">Bookings</a></li>
+                <li><a class="dropdown-item" [routerLink]="['appointments',idOfUser]">Appointments</a></li>
+                <li><a class="dropdown-item" href="#">Log Out</a></li>
+              </ul>
+            </div>
+            <!-- <a class="nav-link profileUser" role="button" *ngIf="roleOfUser=='Doctor'" [routerLink]="[roleOfUser=='Doctor'?'/doctorProfile':'/patientProfile',idOfUser]">
               <p-chip styleClass="my-chip" [label]="doctorData.fullName" [image]="'https://localhost:7198/images/'+doctorData.photoPath" alt="Avatar image"></p-chip>
             </a>
             <a class="nav-link profileUser" role="button" *ngIf="roleOfUser=='Patient'" [routerLink]="[roleOfUser=='Patient'?'/patientProfile':'/patientProfile',idOfUser]">
               <p-chip styleClass="my-chip" [label]="patientData.details.fullName.slice(0,30)" [image]="patientData.details.photoPath?'https://localhost:7198/images/'+patientData.details.photoPath:'./assets/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png'" alt="Avatar image"></p-chip>
-            </a>
+            </a> -->
+            <i class="fa-solid fa-caret-down fa-bounce text-white ms-2 dropdown-toggle" *ngIf="roleOfUser=='Doctor'" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
             
             <!-- <i [class]="roleOfUser=='Doctor'?'fa-solid fa-user-doctor fa-xl':'fa-solid fa-user fa-xl'"></i> -->
           </li>
+          
+         
           
           
         

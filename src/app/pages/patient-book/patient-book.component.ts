@@ -39,7 +39,7 @@ export class PatientBookComponent {
     numberOfRequest!:number
     datesOfDay!:string[]
     transformedTime!:string;
-    private subscriptions: Subscription = new Subscription();
+    
     bookForm:FormGroup=new FormGroup({
         appointmentTimeId:new FormControl(''),
         appointmentRealTime:new FormControl('')
@@ -99,29 +99,27 @@ export class PatientBookComponent {
         
     }
     
-    ngOnDestroy(): void {
-        // Care about memory and close all subscriptions.
-        this.subscriptions.unsubscribe();
-    }
+    
     getAllDatesForDayName(dayName: string): Date[] {
         const currentDate = new Date();
         const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate(); // Get total days in current month
+        const daysInNextMonth= new Date(currentDate.getFullYear(),currentDate.getMonth()+2,0).getDate(); // Get total days in next month
       
         
         
         const dates: Date[] = [];
     
         // Iterate over each date in the current month
-        for (let day = 1; day <= daysInMonth; day++) {
+        for (let day = 1; day <= daysInMonth+daysInNextMonth; day++) {
           const date = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);   // Get date for day
           
           if (date.toLocaleDateString('en', { weekday: 'long' }) === dayName) {
             dates.push(date); // Add the date if its day name matches the desired day name
           }
         }
-        const datePipe=new DatePipe('en-us')
+        const datePipe:any=new DatePipe('en-us')
         const realDayOfMonth=dates.map((date)=>datePipe.transform(date,'yyyy-MM-dd')+'T'+`${this.transformedTime}`)
-        this.datesOfDay=realDayOfMonth
+        this.datesOfDay=realDayOfMonth.filter((date)=>date>datePipe.transform(currentDate,'yyyy-MM-dd'))
         console.log(this.datesOfDay);
         
         return dates;
@@ -152,6 +150,8 @@ export class PatientBookComponent {
         console.log(this.bookForm.value);
         this._PatientService.bookAnAppointment(this.bookForm.value).subscribe({
             next:(response)=>{
+                console.log(response);
+                
                 if(response){
                     const newToastNotification = new ToastNotificationInitializer();
 

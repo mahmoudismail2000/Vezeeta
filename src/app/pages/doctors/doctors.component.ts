@@ -108,7 +108,7 @@ export class DoctorsComponent implements OnInit{
       // Any data can be sent to AnyAngularComponent.
       dialogPopup.setCustomData({ appointmentDay: day, appointmentId: id, appointmentTime: time }); // optional
   
-      // Exchange some data
+
       
   
       // Set some configuration.

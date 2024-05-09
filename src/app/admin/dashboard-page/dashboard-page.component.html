@@ -47,6 +47,42 @@
             </div>
         </div>
     </div>
+    <div class="row mt-5">
+        <div class="col-md-5">
+            <div>
+                <ngx-charts-bar-vertical 
+    [view]="[500,400]"
+    [results]="specializationsChart"
+    [xAxisLabel]="'Specializations'"
+    [legendTitle]="'Top Specializations'"
+    [yAxisLabel]="'Requests'"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [xAxis]="true"
+    [yAxis]="true"
+    [gradient]="true"
+    
+    >
+</ngx-charts-bar-vertical>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div>
+                <ngx-charts-pie-chart 
+                [results]="DoctorsChart"
+                [legend]="true"
+                [legendTitle]="'Top Doctors'" 
+                [view]="[700,300]"
+                [labels]="true" 
+                
+                >
+                
+            </ngx-charts-pie-chart>
+            </div>
+        </div>
+    </div>
+   
 
 
 </section>

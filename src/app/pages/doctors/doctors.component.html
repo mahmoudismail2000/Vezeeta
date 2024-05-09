@@ -192,7 +192,7 @@
                                         <span class="bg-primary text-white fw-bold w-100 py-2 text-center">{{days.day}}</span>
                                         <div class="times d-flex flex-column align-items-center position-relative" #times>
                                             <div class="d-flex flex-column pt-2">
-                                                <span class="timeBook px-3" (click)="booking(days.day,times.id,times.time)" *ngFor="let times of days.times" [id]="times.id">{{times.time}}</span>
+                                                <span class="timeBook px-3" (click)="booking(days.day,time.id,time.time)" *ngFor="let time of days.times" [id]="time.id">{{time.time}}</span>
                                             </div>
                                             <span class="text-primary cursor options px-4" #option (click)="moreAppointments(times,option,isShowMsg)"> More </span>
                                         </div>

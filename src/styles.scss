@@ -2,7 +2,9 @@
 @import "node_modules/@costlydeveloper/ngx-awesome-popup/styles/theme";
 
 
-
+.p-orderlist-controls {
+    display: none !important;
+}
 
 $main-color:#2B2589;
 $font-family: "Encode Sans Expanded", sans-serif;

@@ -32,7 +32,8 @@ const routes: Routes = [
     {path:'doctorSpecialize/:id',loadComponent:()=>import('./pages/all-doctors-in-specialize/all-doctors-in-specialize.component').then((m)=>m.AllDoctorsInSpecializeComponent),title:'Doctors Specialize'},
     {path:'doctorProfile/:id',canActivate:[authDoctorGuard],loadComponent:()=>import('./pages/doctor-profile/doctor-profile.component').then((m)=>m.DoctorProfileComponent),title:'Profile'},
     {path:'patientProfile/:id',canActivate:[authPatientGuard],loadComponent:()=>import('./pages/patient-profile/patient-profile.component').then((m)=>m.PatientProfileComponent),title:'Profile'},
-    {path:'booking',loadComponent:()=>import('./pages/patient-book/patient-book.component').then((m)=>m.PatientBookComponent),title:'Book'}
+    {path:'booking',loadComponent:()=>import('./pages/patient-book/patient-book.component').then((m)=>m.PatientBookComponent),title:'Book'},
+    {path:'appointments/:id',loadComponent:()=>import('./pages/appointments/appointments.component').then((m)=>m.AppointmentsComponent),title:'Appointments'}
    ]},
    {path:'',loadComponent:()=>import('./layouts/layoutsUserChilds/layout-auth/layout-auth.component').then((m)=>m.LayoutAuthComponent),children:[
     {path:'login',loadComponent:()=>import('./pages/login/login.component').then((m)=>m.LoginComponent),title:'Login'},

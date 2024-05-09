@@ -8,6 +8,7 @@ import { DoctorData } from 'src/app/core/interfaces/doctor-data';
 import { PatientService } from 'src/app/core/services/patient.service';
 import { PatientData } from 'src/app/core/interfaces/patient-data';
 import { ChipModule } from 'primeng/chip';
+import { MenuItem, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-navbar-blank',

@@ -1,24 +1,25 @@
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { RouterOutlet } from '@angular/router';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
-import { MyHttpInterceptor } from './core/interceptors/my-http.interceptor';
-import { ToastrModule } from 'ngx-toastr';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { RouterOutlet } from '@angular/router';
 import {
-  NgxAwesomePopupModule,
-  DialogConfigModule,
   ConfirmBoxConfigModule,
+  DialogConfigModule,
+  NgxAwesomePopupModule,
   ToastNotificationConfigModule
 } from '@costlydeveloper/ngx-awesome-popup';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxScrollTopModule } from 'ngx-scrolltop';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { ToastrModule } from 'ngx-toastr';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
+import { MyHttpInterceptor } from './core/interceptors/my-http.interceptor';
 
 import { ScrollTopModule } from 'primeng/scrolltop';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 
@@ -41,7 +42,9 @@ import { ScrollTopModule } from 'primeng/scrolltop';
     ConfirmBoxConfigModule.forRoot(), // Needed for instantiating confirm boxes.
     ToastNotificationConfigModule.forRoot(), // Needed for instantiating toast notifications.
     NgxScrollTopModule,
-    ScrollTopModule
+    ScrollTopModule,
+    NgxChartsModule
+    
     
     
   ],

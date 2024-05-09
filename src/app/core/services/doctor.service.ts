@@ -30,4 +30,14 @@ export class DoctorService {
     return this._HttpClient.put(this.baseUrl+`Bookings/ConfirmCheckUp?id=${id}`,{})
 
   }
+  deleteAppointment(timeId:number):Observable<any>
+  {
+    return this._HttpClient.delete(this.baseUrl+`Appointments/DeleteTime?id=${timeId}`)
+
+  }
+  updateAppointment(timeUpdated:object):Observable<any>
+  {
+    return this._HttpClient.put(this.baseUrl+'Appointments/UpdateTime',timeUpdated)
+
+  }
 }

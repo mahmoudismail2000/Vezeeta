@@ -3,16 +3,15 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { DoctorData } from 'src/app/core/interfaces/doctor-data';
-import { AdminService } from 'src/app/core/services/admin.service';
 
 import {
   DialogInitializer,
   DialogLayoutDisplay
 } from '@costlydeveloper/ngx-awesome-popup';
-import { PatientBookComponent } from '../patient-book/patient-book.component';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
-import { SpecializationService } from 'src/app/core/services/specialization.service';
 import { PatientService } from 'src/app/core/services/patient.service';
+import { SpecializationService } from 'src/app/core/services/specialization.service';
+import { PatientBookComponent } from '../patient-book/patient-book.component';
 @Component({
   selector: 'app-all-doctors-in-specialize',
   standalone: true,
@@ -65,7 +64,7 @@ export class AllDoctorsInSpecializeComponent implements OnInit{
     })
     this._PatientService.getAllDoctorsInSpecialization(this.specializeId).subscribe({
       next:(response)=>{
-        console.log(response);
+        console.log( this.allDoctorsInSpecialization.length);
         this.allDoctorsInSpecialization=response
         
       },
