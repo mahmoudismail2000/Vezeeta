@@ -40,4 +40,12 @@ export class DoctorService {
     return this._HttpClient.put(this.baseUrl+'Appointments/UpdateTime',timeUpdated)
 
   }
+  addAppointment(dayOfAppointment:object):Observable<any>
+  {
+    return this._HttpClient.post(this.baseUrl+'Appointments/Add',{
+      days:[
+        dayOfAppointment
+      ]
+    })
+  }
 }

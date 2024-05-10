@@ -1,25 +1,22 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import {
+  AppearanceAnimation,
+  DialogInitializer,
+  DialogLayoutDisplay,
+  DisappearanceAnimation,
+  ToastNotificationInitializer,
+  ToastPositionEnum,
+  ToastProgressBarEnum,
+  ToastUserViewTypeEnum,
+} from '@costlydeveloper/ngx-awesome-popup';
 import { OrderListModule } from 'primeng/orderlist';
 import { AdminService } from 'src/app/core/services/admin.service';
-import { ActivatedRoute } from '@angular/router';
 import { DoctorService } from 'src/app/core/services/doctor.service';
-import { HttpErrorResponse } from '@angular/common/http';
-import {
-  ToastNotificationInitializer,
-  DialogLayoutDisplay,
-  ToastUserViewTypeEnum,
-  ToastProgressBarEnum,
-  DisappearanceAnimation,
-  AppearanceAnimation,
-  ToastPositionEnum,
-} from '@costlydeveloper/ngx-awesome-popup';
-import {
-  DialogInitializer,
-  ButtonLayoutDisplay,
-  ButtonMaker
-} from '@costlydeveloper/ngx-awesome-popup';
-import {UpdateAppointmentComponent} from 'src/app/pages/update-appointment/update-appointment.component';
+import { UpdateAppointmentComponent } from 'src/app/pages/update-appointment/update-appointment.component';
+import { AddAppointmentsdoctorBookingsComponent } from './../add-appointmentsdoctor-bookings/add-appointmentsdoctor-bookings.component';
 
 @Component({
   selector: 'app-appointments',
@@ -108,6 +105,19 @@ export class AppointmentsComponent implements OnInit{
       this.ngOnInit()
       
 
+    });
+
+  }
+  addAppointment():void
+  {
+    const dialogPopup = new DialogInitializer(AddAppointmentsdoctorBookingsComponent);
+    dialogPopup.setCustomData({ name: 'Jean-Luc', surname: 'Picard', id: 1 }); 
+    dialogPopup.setConfig({
+      width: '700px',
+      layoutType: DialogLayoutDisplay.NONE // SUCCESS | INFO | NONE | DANGER | WARNING
+    });
+    dialogPopup.openDialog$().subscribe(resp => {
+      this.ngOnInit()
     });
 
   }
