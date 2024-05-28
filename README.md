@@ -31,6 +31,7 @@ DocTors is a healthcare technology platform that connects patients with healthca
   <img src="https://github.com/mahmoudismail2000/Vezeeta/assets/108597788/1026ffc3-eaa6-4f7c-bb00-9dff504a9ba1" width="300px">
   <img src="https://github.com/mahmoudismail2000/Vezeeta/assets/108597788/55740887-80b2-4c67-a628-70773c628e2e" width="300px">
   <img src="https://github.com/mahmoudismail2000/Vezeeta/assets/108597788/5074e3ee-a1c4-46e6-ba8e-384ed046ec58" width="300px">
+  <img src="https://github.com/mahmoudismail2000/Vezeeta/assets/108597788/5074e3ee-a1c4-46e6-ba8e-384ed046ec58" width="300px">
   <img src="https://github.com/mahmoudismail2000/Vezeeta/assets/108597788/957af690-847d-4887-9904-49467a7538c2" width="300px">
   <img src="https://github.com/mahmoudismail2000/Vezeeta/assets/108597788/65aebeab-512f-4442-b964-95a397bda788" width="300px">
   <img src="https://github.com/mahmoudismail2000/Vezeeta/assets/108597788/dfb986ee-e859-4794-8f04-4d504f454556" width="300px">
